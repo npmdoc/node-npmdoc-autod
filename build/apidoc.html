@@ -1,0 +1,224 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/node-modules/autod#readme"
+
+    >autod (v2.8.0)</a>
+</h1>
+<h4>auto generate dependencies</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.autod">module autod</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.autod.autod">
+            function <span class="apidocSignatureSpan"></span>autod
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.autod.super_">
+            function <span class="apidocSignatureSpan">autod.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.autod.toString">
+            function <span class="apidocSignatureSpan">autod.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">autod.</span>USER_AGENT</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.autod.toString">module autod.toString</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.autod.toString.toString">
+            function <span class="apidocSignatureSpan">autod.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.autod" id="apidoc.module.autod">module autod</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.autod.autod" id="apidoc.element.autod.autod">
+        function <span class="apidocSignatureSpan"></span>autod
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">autod = function (options) {
+  if (!(this instanceof Autod)) {
+    return new Autod(options);
+  }
+  options = options || {};
+  if (!options.root) {
+    throw new Error(&#x27;need options.root!&#x27;);
+  }
+  this.root = path.resolve(options.root);
+
+  EventEmitter.call(this);
+
+  this.exclude = options.exclude || [];
+  if (!Array.isArray(this.exclude)) {
+    this.exclude = [this.exclude];
+  }
+
+  this.exclude = this.exclude.concat([&#x27;node_modules&#x27;, &#x27;.git&#x27;, &#x27;cov&#x27;, &#x27;coverage&#x27;]);
+  this.exclude = this.resolveWithRoot(this.exclude);
+  this.testRoots = options.test || [];
+  this.testRoots = this.testRoots.concat([&#x27;test&#x27;, &#x27;benchmark&#x27;, &#x27;example&#x27;, &#x27;example.js&#x27;]);
+  this.testRoots = this.resolveWithRoot(this.testRoots);
+  this.testRoots = this.removeExclude(this.testRoots);
+  this.registry = (options.registry || &#x27;https://registry.npmjs.org&#x27;).replace(/\/$/, &#x27;&#x27;);
+  this.dep = options.dep || [];
+  this.devdep = options.devdep || [];
+  this.dependencyMap = {};
+  this.semver = options.semver || {};
+  this.notransform = options.notransform;
+  if (options.plugin) {
+    try {
+      var pluginPath = path.join(process.cwd(), &#x27;node_modules&#x27;, options.plugin);
+      this.plugin = require(pluginPath);
+    } catch (err) {
+      throw new Error(&#x27;plugin &#x27; + options.plugin + &#x27; not exist!&#x27;);
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.autod.super_" id="apidoc.element.autod.super_">
+        function <span class="apidocSignatureSpan">autod.</span>super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function EventEmitter() {
+  EventEmitter.init.call(this);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.autod.toString" id="apidoc.element.autod.toString">
+        function <span class="apidocSignatureSpan">autod.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+    return text;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.autod.toString" id="apidoc.module.autod.toString">module autod.toString</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.autod.toString.toString" id="apidoc.element.autod.toString.toString">
+        function <span class="apidocSignatureSpan">autod.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>

@@ -1,4 +1,7 @@
-# api documentation for  [autod (v2.8.0)](https://github.com/node-modules/autod#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-autod.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-autod) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-autod.svg)](https://travis-ci.org/npmdoc/node-npmdoc-autod)
+# npmdoc-autod
+
+#### basic api documentation for  [autod (v2.8.0)](https://github.com/node-modules/autod#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-autod.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-autod) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-autod.svg)](https://travis-ci.org/npmdoc/node-npmdoc-autod)
+
 #### auto generate dependencies
 
 [![NPM](https://nodei.co/npm/autod.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/autod)
